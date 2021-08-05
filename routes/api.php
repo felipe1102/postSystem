@@ -22,8 +22,6 @@ Route::prefix('v1')->group(function () {
     Route::post("/login", [AuthController::class, 'login']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
-        Route::delete("/logout", [AuthController::class, 'logout']);
-        Route::put("/user/{id}", [UserController::class, 'update']);
         Route::prefix('post')->group(function () {
             Route::get('/', [PostController::class, 'index']);
             Route::post('/', [PostController::class, 'store']);
@@ -32,5 +30,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('comment')->group(function () {
             Route::post('/', [CommentsController::class, 'store']);
         });
+        Route::put("/user/{id}", [UserController::class, 'update']);
+        Route::delete("/logout", [AuthController::class, 'logout']);
     });
 });
