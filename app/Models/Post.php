@@ -25,9 +25,9 @@ class Post extends Model
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
     public function comments() {
-        return $this->hasMany(Comment::class, 'id_post', 'id')->where("id_user", "!=", Auth::user()->id);
+        return $this->hasMany(Comment::class, 'id_post', 'id')->where("id_user", "!=", Auth::user()->id)->orderBy('id', 'DESC');
     }
     public function loggedUserComments() {
-        return $this->hasMany(Comment::class, 'id_post', 'id')->where("id_user", Auth::user()->id);
+        return $this->hasOne(Comment::class, 'id_post', 'id')->where("id_user", Auth::user()->id)->orderBy('id', 'DESC');
     }
 }

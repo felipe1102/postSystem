@@ -14,6 +14,7 @@ const PostForm = props =>{
     });
 
     const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState("");
 
     const [showAlert, setShowAlert] = useState(false);
     const [text, setText] = useState('');
@@ -59,24 +60,29 @@ const PostForm = props =>{
         if (sucess){
             history.push('/')
         }
+        history.push("/sale/".id)
     }
 
     useEffect( () => {
         if(id){
+
             axios.get(`/api/v1/post/${id}`, {
                 headers: {
                     Authorization: `Bearer ${props.token}`
                 }
             }).then(response => {
-                console.log(response.data.data);
                 let dataComments = [];
-                Array.prototype.push.apply(dataComments, response.data.data.comments);
-                Array.prototype.push.apply(dataComments, response.data.data.logged_user_comments);
-                console.log(dataComments)
-                setComments(dataComments);
-                /*for(let i=0; i < dataComments.length(); i++){
 
-                }*/
+                if (response.data.data.comments.length ){
+                    Array.prototype.push.apply(dataComments, response.data.data.comments);
+
+                }
+                if (response.data.data.logged_user_comments){
+                    Array.prototype.push.apply(dataComments, [response.data.data.logged_user_comments]);
+                }
+
+                setComments(dataComments);
+
                 setPost({
                     "title": response.data.data.title,
                     "description": response.data.data.description
@@ -94,6 +100,30 @@ const PostForm = props =>{
         }
     }, [id]);
 
+    const createNewComment = e =>{
+        e.preventDefault();
+        axios.post(`/api/v1/comment`, {
+                "post_id": id,
+                "description": newComment
+        }, {
+            headers: {
+                Authorization: `Bearer ${props.token}`
+            }
+        }).then(response => {
+            setText(response.data.message);
+            setTitle("Sucesso");
+            setShowAlert(true);
+            setSucess(false)
+        }).catch(err => {
+            let error = err.response.data;
+            setSucess(false);
+            setTitle(error.error);
+            setText(error.message);
+            setConfirmBtnText("Ok")
+            setTypeSweetAlert('danger')
+            setShowAlert(true);
+        })
+    }
 
     let listComment = null;
     if (comments.length){
@@ -113,7 +143,7 @@ const PostForm = props =>{
                     <Form onSubmit={onSubmit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Titulo</Form.Label>
-                            <Form.Control type="text"  placeholder="Titulo" value={post.title} onChange={e => onChange(e)} name={"title"} />
+                            <Form.Control type="text" disabled={id?true:false} placeholder="Titulo" value={post.title} onChange={e => onChange(e)} name={"title"} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Descrição</Form.Label>
@@ -125,15 +155,25 @@ const PostForm = props =>{
                             </Button>
                         }
                     </Form>
-
                 </Col>
                 {
                     !id ? null :
                         <Col xs lg="10">
                             <h4>Comentarios</h4>
                             <hr />
+                            <Form >
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Comentar</Form.Label>
+                                    <Form.Control as="textarea" rows={3} value={newComment} onChange={e => setNewComment(e.target.value)} name={"comment"} />
+                                </Form.Group>
 
+                                <Button onClick={e => createNewComment(e)} className="mb-2">
+                                    Comentar
+                                </Button>
+
+                            </Form>
                             {listComment}
+
                         </Col>
                 }
 

@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         return response()->json([
             'message' => "Post encontrados",
-            'data' => Post::paginate(30)
+            'data' => Post::orderBy('id', 'DESC')->get()
         ], 201);
     }
 
