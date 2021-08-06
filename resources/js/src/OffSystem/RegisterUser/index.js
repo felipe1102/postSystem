@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import {Button, Row} from 'react-bootstrap';
 import {useHistory} from "react-router-dom";
-import style from './RegisterUser.module.css';
 import Input from "../../Components/Input";
 import Message from "../../Components/Message";
 import Spinner from "../../Components/Spinner/Spinner";
-//import styles from "../Login/Login.module.css";
+
 import styles from "./RegisterUser.module.css";
 import SweetAlerts from "../../Components/SweetAlert/SweetAlerts";
 
@@ -37,23 +36,26 @@ export default props =>{
     const onConfirm = e =>{
         setShowAlert(false);
         if (sucess){
-            history.push('/login')
+            history.push('/')
         }
     }
 
     const handlerSubmit = async (e) => {
         e.preventDefault();
         axios.post(`/api/v1/user`, user).then(response => {
-            console.log(response.data.message);
             setText(response.data.message);
             setTitle("Sucesso");
             setShowAlert(true);
             setSucess(true);
         }).catch(err => {
-            console.log(err);
+            let error = err.response.data;
             setSucess(false);
+            setTitle(error.error);
+            setText(error.message);
+            setConfirmBtnText("Ok")
+            setTypeSweetAlert('danger')
+            setShowAlert(true);
         })
-        //setLoading(true);
     }
 
     return(

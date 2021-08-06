@@ -8,9 +8,9 @@ const OffSystem = () => {
     return (
         <Container fluid>
             <Switch>
-                <Route key={'/login'} path={'/login'} render={() => <Login/>} />
+                <Route key={'/'} path={'/'} render={() => <Login/>} />
                 <Route path={'/user'} render={() => <RegisterUser/>} />
-                <Redirect key={'/login'} to={'/login'} render={() => <Login />}/>
+                <Redirect key={'/'} to={'/'} render={() => <Login />}/>
             </Switch>
         </Container>
     );
