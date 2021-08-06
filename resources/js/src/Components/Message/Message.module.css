@@ -1,0 +1,27 @@
+.Message {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem;
+}
+
+.Message > div {
+    text-align: center;
+    color: white;
+    border-radius: .5rem;
+}
+
+.info {
+    font-size: 1.5rem;
+    background-color: var(--color-primary);
+}
+
+.error {
+    color: var(--color-danger);
+    background-color: var(--color-danger);
+}
+
+.danger {
+    background-color: white;
+    color: var(--color-danger)!important;
+}

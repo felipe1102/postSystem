@@ -1,0 +1,56 @@
+.Login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.Login h1 {
+    text-align: center;
+}
+
+.Login form {
+    min-width: 25rem;
+    max-width: 36rem;
+    width: 90%;
+    height: 33rem;
+    margin-left: 30%;
+    box-sizing: border-box;
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: .7rem;
+    background-color: #182031cc;
+}
+
+.Login form label {
+    color: var(--color-white);
+}
+
+.Login form > div {
+    margin-top: 1.5rem;
+}
+
+.Login form > div:first-child {
+    margin: 1.5rem 0;
+}
+
+.Login form input {
+    text-align: center;
+}
+
+.Login form > div > button:hover {
+    transition: all .35s ease-in-out;
+}
+
+.Login form img {
+    margin: 0 auto;
+    opacity: 0.6;
+}
+
+@media (max-width: 1000px) {
+    .Login form {
+        margin: 0 auto;
+    }
+}
+

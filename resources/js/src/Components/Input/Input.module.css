@@ -1,0 +1,81 @@
+.Input {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.Input input {
+    padding: .7rem;
+    font-size: 1.4rem;
+    border: 1px solid lightgrey;
+    border-radius: .4rem;
+    text-align: center;
+    text-indent: 8px;
+    outline: none;
+}
+
+.labels {
+    display: flex;
+    color: var(--color-grey);
+    justify-content: space-between;
+}
+
+.Input input::placeholder {
+    color: var(--color-grey);
+}
+
+.Input input:focus {
+    box-shadow: 0 0 .4rem var(--color-primary);
+}
+
+.Input label {
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.InputFile {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.InputFile label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.InputFile input {
+    padding: .8rem;
+    display: inline-block;
+    border: none;
+    border-radius: .4rem;
+}
+
+.InputFile input::placeholder {
+    font-size: 1.6rem;
+}
+
+.LabelFile {
+    background-color: black;
+    padding: .8rem;
+    border-radius: .4rem;
+}
+
+.LabelFile:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+.AlignEnd {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: .5rem;
+    margin-left: 1rem;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
