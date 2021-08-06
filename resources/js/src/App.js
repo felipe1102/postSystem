@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { authCheckState } from "./Store/Actions";
 import Spinner from "./Components/Spinner/Spinner";
 
-//const Login = React.lazy(()=>import("./OffSystem/Login"));
 const System = React.lazy(()=>import("./System"));
 const OffSystem = React.lazy(()=>import("./OffSystem"));
 
