@@ -48,7 +48,7 @@ const Login = props =>{
                     onChange={setPasswordChange}
                 />
                 {props.error ? <Message type={'error'}>{props.error}</Message> : null}
-                <Button>Entrar {loading ? <Spinner size={'small'} /> : null}</Button>
+                <Button size="lg">Entrar {loading ? <Spinner size={'small'} /> : null}</Button>
 
                 <Button className={"mt-2"} variant="secondary" href="/user">Cadastrar usuario</Button>
             </form>

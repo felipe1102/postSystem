@@ -1,0 +1,27 @@
+.SweetAlert h2 {
+    color: var(--color-primary);
+}
+
+.SweetAlert div {
+    color: var(--color-secondary);
+
+}
+
+.SweetAlert p {
+    color: var(--color-primary);
+}
+
+.SweetAlert a:link,
+.SweetAlert a:active {
+    font-size: 1.5rem !important;
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    margin: 0 auto;
+    box-shadow: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,18 +1,23 @@
-.Login {
+.UserRegister {
     min-height: 100vh;
     display: flex;
     align-items: center;
 }
 
-.Login h1 {
+.UserRegister h1 {
     text-align: center;
 }
 
-.Login form {
+.UserRegister h3 {
+    text-align: center;
+    color: var(--color-grey);
+}
+
+.UserRegister form {
     min-width: 25rem;
     max-width: 36rem;
     width: 90%;
-    height: 33rem;
+    height: 35rem;
     margin-left: 30%;
     box-sizing: border-box;
     display: flex;
@@ -23,29 +28,12 @@
     background-color: #182031cc;
 }
 
-.Login form label {
-    color: var(--color-white);
-}
+.UserRegister form input{
 
-.Login form > div {
-    margin-top: 1.5rem;
-}
-
-.Login form > div:first-child {
-    margin: 1.5rem 0;
-}
-
-.Login form input {
-    text-align: center;
-}
-
-.Login form > div > button:hover {
-    transition: all .35s ease-in-out;
 }
 
 @media (max-width: 1000px) {
-    .Login form {
+    .UserRegister form {
         margin: 0 auto;
     }
 }
-
